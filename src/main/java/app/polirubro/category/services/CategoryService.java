@@ -51,7 +51,7 @@ public class CategoryService {
     }
 
     public List<Category> findAll(){
-        return this.categoryRepository.findAll();
+        return this.categoryRepository.findByUser(this.userService.getCurrentUser());
     }
 
     public void delete(Long id){

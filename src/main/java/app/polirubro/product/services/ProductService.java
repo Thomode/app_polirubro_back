@@ -74,7 +74,7 @@ public class ProductService {
     }
 
     public List<Product> findAll(){
-        return this.productRepository.findAll();
+        return this.productRepository.findByUser(this.userService.getCurrentUser());
     }
 
     public void delete(Long id){
