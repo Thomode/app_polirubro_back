@@ -5,6 +5,7 @@ import app.polirubro.product.dto.ProductResponse;
 import app.polirubro.product.mappers.ProductToProductResponse;
 import app.polirubro.product.services.ProductService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -31,7 +32,10 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @PutMapping("/{id}")
-    public ResponseEntity<ProductResponse> update(@PathVariable Long id, @Validated @RequestBody ProductRequest productRequest){
+    public ResponseEntity<ProductResponse> update(
+            @PathVariable Long id,
+            @Validated @RequestBody ProductRequest productRequest
+    ){
         ProductResponse productResponse = new ProductToProductResponse()
                 .apply(this.productService.update(id, productRequest));
 
@@ -48,10 +52,30 @@ public class ProductController {
     }
 
     @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/search-barcode")
+    public ResponseEntity<ProductResponse> findByBarcode(
+            @RequestParam(name = "barcode", required = true) String barcode
+    ){
+        ProductResponse productResponse = new ProductToProductResponse()
+                .apply(this.productService.findByBarcode(barcode));
+
+        return ResponseEntity.ok(productResponse);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> findAll(){
-        List<ProductResponse> productResponses = this.productService.findAll().stream()
-                .map(new ProductToProductResponse()).toList();
+    public ResponseEntity<List<ProductResponse>> findAll(
+            @RequestParam(name = "search", required = false) String search
+    ){
+        List<ProductResponse> productResponses;
+
+        if(search == null){
+            productResponses = this.productService.findAll().stream()
+                    .map(new ProductToProductResponse()).toList();
+        }else {
+            productResponses = this.productService.findByBarcodeOrName(search).stream()
+                    .map(new ProductToProductResponse()).toList();
+        }
 
         return ResponseEntity.ok(productResponses);
     }

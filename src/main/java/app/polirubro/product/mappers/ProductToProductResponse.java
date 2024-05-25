@@ -12,6 +12,7 @@ public class ProductToProductResponse implements Function<Product, ProductRespon
     public ProductResponse apply(Product product) {
         return ProductResponse.builder()
                 .id(product.getId())
+                .barcode(product.getBarcode())
                 .name(product.getName())
                 .description(product.getDescription())
                 .quantityStock(product.getQuantityStock())

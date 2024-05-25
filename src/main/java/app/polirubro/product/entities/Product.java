@@ -21,6 +21,9 @@ public class Product {
     @SequenceGenerator(name = "product_generator", sequenceName = "product_seq", allocationSize = 1)
     Long id;
 
+    @Column(nullable = true, unique = true)
+    String barcode;
+
     @Column(nullable = false, unique = true)
     String name;
 

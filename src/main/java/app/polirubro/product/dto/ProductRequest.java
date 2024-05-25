@@ -16,6 +16,9 @@ public class ProductRequest {
     @NotBlank
     String name;
 
+    @Schema(example = "123432435")
+    String barcode;
+
     @Schema(example = "4GB RAM, 64 GB ROM y Android 12")
     @NotBlank
     String description;

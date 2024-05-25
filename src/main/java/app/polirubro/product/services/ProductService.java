@@ -30,6 +30,7 @@ public class ProductService {
         Category categoryFound = this.categoryService.findById(productRequest.getCategoryId());
 
         Product newProduct = Product.builder()
+                .barcode(productRequest.getBarcode() != null ? productRequest.getBarcode() : "")
                 .name(productRequest.getName())
                 .description(productRequest.getDescription())
                 .imageUrl("")
@@ -55,6 +56,7 @@ public class ProductService {
             throw new IllegalArgumentException("Product already registered");
         }
 
+        productFound.setBarcode(productFound.getBarcode() != null ? productFound.getBarcode() : "");
         productFound.setName(productRequest.getName());
         productFound.setDescription(productRequest.getDescription());
         productFound.setQuantityStock(productRequest.getQuantityStock());
@@ -73,8 +75,17 @@ public class ProductService {
                 .orElseThrow( () -> new NoSuchElementException("Product not found"));
     }
 
+    public Product findByBarcode(String barcode){
+        return this.productRepository.findByBarcodeAndUser(barcode, this.userService.getCurrentUser())
+                .orElseThrow(() -> new NoSuchElementException("Product not found"));
+    }
+
     public List<Product> findAll(){
         return this.productRepository.findByUser(this.userService.getCurrentUser());
+    }
+
+    public List<Product> findByBarcodeOrName(String search){
+        return this.productRepository.findByBarcodeOrName(search, this.userService.getCurrentUser());
     }
 
     public void delete(Long id){

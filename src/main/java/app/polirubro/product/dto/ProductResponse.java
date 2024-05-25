@@ -14,6 +14,9 @@ public class ProductResponse {
     @Schema(example = "1")
     Long id;
 
+    @Schema(example = "123432435")
+    String barcode;
+
     @Schema(example = "Celular Samsung M22")
     String name;
 
