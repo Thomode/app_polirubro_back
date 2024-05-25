@@ -1,6 +1,6 @@
-package app.polirubro.user.controllers.Mappers;
+package app.polirubro.user.Mappers;
 
-import app.polirubro.user.controllers.DTO.UserResponse;
+import app.polirubro.user.dto.UserResponse;
 import app.polirubro.user.entities.User;
 
 import java.util.function.Function;

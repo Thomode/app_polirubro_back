@@ -1,4 +1,4 @@
-package app.polirubro.auth.controllers.dto;
+package app.polirubro.auth.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;

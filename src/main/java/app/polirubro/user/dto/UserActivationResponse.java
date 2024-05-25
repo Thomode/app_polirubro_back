@@ -1,14 +1,14 @@
-package app.polirubro.auth.controllers.dto;
+package app.polirubro.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class ForgotPasswordResponse {
+public class UserActivationResponse {
     String message;
 }

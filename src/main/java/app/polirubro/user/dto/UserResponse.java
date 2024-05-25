@@ -1,4 +1,4 @@
-package app.polirubro.user.controllers.DTO;
+package app.polirubro.user.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

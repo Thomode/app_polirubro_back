@@ -21,7 +21,6 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-
     @Resource
     private Environment env;
 

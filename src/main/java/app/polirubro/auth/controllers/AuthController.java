@@ -1,6 +1,6 @@
 package app.polirubro.auth.controllers;
 
-import app.polirubro.auth.controllers.dto.*;
+import app.polirubro.auth.dto.*;
 import app.polirubro.auth.services.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

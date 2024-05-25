@@ -3,9 +3,9 @@ package app.polirubro.user.services;
 
 import app.polirubro.pagination.dto.PaginationInfo;
 import app.polirubro.pagination.utils.PaginationUtility;
-import app.polirubro.user.controllers.DTO.UserActivationResponse;
-import app.polirubro.user.controllers.DTO.UserUpdateRequest;
-import app.polirubro.user.controllers.DTO.UserUpdateResponse;
+import app.polirubro.user.dto.UserActivationResponse;
+import app.polirubro.user.dto.UserUpdateRequest;
+import app.polirubro.user.dto.UserUpdateResponse;
 import app.polirubro.user.entities.User;
 import app.polirubro.user.repositories.UserRepository;
 import jakarta.annotation.Resource;
@@ -14,12 +14,14 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -131,5 +133,16 @@ public class UserService {
         Pageable page = PageRequest.of(pageNumber, Integer.parseInt(env.getProperty("pagination.page-size")));
 
         return this.userRepository.findAll(page).stream().toList();
+    }
+
+    public User getCurrentUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        return this.userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new NoSuchElementException("user not logged in"));
+    }
+
+    public boolean isYourRegister(User user){
+        return this.getCurrentUser().getUsername().equals(user.getUsername());
     }
 }

@@ -1,11 +1,11 @@
 package app.polirubro.user.controllers;
 
 import app.polirubro.pagination.dto.PaginationInfo;
-import app.polirubro.user.controllers.DTO.UserActivationResponse;
-import app.polirubro.user.controllers.DTO.UserResponse;
-import app.polirubro.user.controllers.DTO.UserUpdateRequest;
-import app.polirubro.user.controllers.DTO.UserUpdateResponse;
-import app.polirubro.user.controllers.Mappers.UserToUserResponse;
+import app.polirubro.user.dto.UserActivationResponse;
+import app.polirubro.user.dto.UserResponse;
+import app.polirubro.user.dto.UserUpdateRequest;
+import app.polirubro.user.dto.UserUpdateResponse;
+import app.polirubro.user.Mappers.UserToUserResponse;
 import app.polirubro.user.entities.User;
 import app.polirubro.user.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 @Tag(name = "User")
 @RequiredArgsConstructor
 public class UserController {

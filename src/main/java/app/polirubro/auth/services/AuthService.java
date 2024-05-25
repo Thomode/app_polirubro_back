@@ -1,6 +1,6 @@
 package app.polirubro.auth.services;
 
-import app.polirubro.auth.controllers.dto.*;
+import app.polirubro.auth.dto.*;
 import app.polirubro.auth.jwt.JwtService;
 import app.polirubro.email.entities.EmailVerificationToken;
 import app.polirubro.email.entities.PasswordResetToken;

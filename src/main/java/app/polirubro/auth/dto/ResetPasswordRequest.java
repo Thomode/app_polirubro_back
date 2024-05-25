@@ -1,14 +1,15 @@
-package app.polirubro.user.controllers.DTO;
+package app.polirubro.auth.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserUpdateResponse {
-    String message;
+@Builder
+public class ResetPasswordRequest {
+    String token;
+    String newPassword;
 }

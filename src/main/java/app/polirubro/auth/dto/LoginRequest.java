@@ -1,4 +1,4 @@
-package app.polirubro.user.controllers.DTO;
+package app.polirubro.auth.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
@@ -9,10 +9,11 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserUpdateRequest {
-    @Schema(example = "John")
-    String firstname;
+public class LoginRequest {
 
-    @Schema(example = "Doe")
-    String lastname;
+    @Schema(example = "thomode")
+    String username;
+    @Schema(example = "1234")
+    String password;
+
 }

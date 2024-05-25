@@ -1,4 +1,4 @@
-package app.polirubro.user.controllers.DTO;
+package app.polirubro.auth.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserActivationResponse {
-    String message;
+public class AuthResponse {
+    String token;
 }
