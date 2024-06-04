@@ -1,6 +1,7 @@
 package app.polirubro.product.dto;
 
 import app.polirubro.category.dto.CategoryResponse;
+import app.polirubro.firebaseStorage.dto.ImageResponse;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -33,4 +34,6 @@ public class ProductResponse {
     double buyPrice;
 
     CategoryResponse category;
+
+    ImageResponse image;
 }

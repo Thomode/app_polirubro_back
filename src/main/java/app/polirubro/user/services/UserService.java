@@ -142,7 +142,13 @@ public class UserService {
                 .orElseThrow(() -> new NoSuchElementException("user not logged in"));
     }
 
-    public boolean isYourRegister(User user){
+    public String getCurrentUsername(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        return authentication.getName();
+    }
+
+    public boolean isMyRegister(User user){
         return this.getCurrentUser().getUsername().equals(user.getUsername());
     }
 }

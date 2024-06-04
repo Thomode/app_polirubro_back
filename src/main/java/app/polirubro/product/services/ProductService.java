@@ -48,7 +48,7 @@ public class ProductService {
     public Product update(Long id, ProductRequest productRequest){
         Product productFound = this.findById(id);
 
-        if(!this.userService.isYourRegister(productFound.getUser())){
+        if(!this.userService.isMyRegister(productFound.getUser())){
             throw new NoSuchElementException("The product does not belong to you");
         }
 
@@ -91,7 +91,7 @@ public class ProductService {
     public void delete(Long id){
         Product productFound = this.findById(id);
 
-        if(!this.userService.isYourRegister(productFound.getUser())){
+        if(!this.userService.isMyRegister(productFound.getUser())){
             throw new NoSuchElementException("The product does not belong to you");
         }
 

@@ -35,7 +35,7 @@ public class CategoryService {
     public Category update(Long id, CategoryRequest categoryRequest){
         Category categoryFound = this.findById(id);
 
-        if(!this.userService.isYourRegister(categoryFound.getUser())){
+        if(!this.userService.isMyRegister(categoryFound.getUser())){
             throw new NoSuchElementException("The category does not belong to you");
         }
 
@@ -57,7 +57,7 @@ public class CategoryService {
     public void delete(Long id){
         Category categoryFound = this.findById(id);
 
-        if(!this.userService.isYourRegister(categoryFound.getUser())){
+        if(!this.userService.isMyRegister(categoryFound.getUser())){
             throw new NoSuchElementException("The category does not belong to you");
         }
 

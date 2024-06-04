@@ -1,6 +1,7 @@
 package app.polirubro.product.entities;
 
 import app.polirubro.category.entities.Category;
+import app.polirubro.firebaseStorage.entities.Image;
 import app.polirubro.user.entities.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,7 +22,7 @@ public class Product {
     @SequenceGenerator(name = "product_generator", sequenceName = "product_seq", allocationSize = 1)
     Long id;
 
-    @Column(nullable = true, unique = true)
+    @Column(nullable = true)
     String barcode;
 
     @Column(nullable = false, unique = true)
@@ -55,4 +56,8 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "user_id")
     User user;
+
+    @OneToOne(mappedBy = "product")
+    @JoinColumn(name = "image_id")
+    Image image;
 }

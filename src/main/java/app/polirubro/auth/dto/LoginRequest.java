@@ -10,10 +10,9 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LoginRequest {
-
     @Schema(example = "thomode")
     String username;
+
     @Schema(example = "1234")
     String password;
-
 }

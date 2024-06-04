@@ -12,12 +12,12 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductRequest {
+    @Schema(example = "123432435")
+    String barcode;
+
     @Schema(example = "Celular Samsung M22")
     @NotBlank
     String name;
-
-    @Schema(example = "123432435")
-    String barcode;
 
     @Schema(example = "4GB RAM, 64 GB ROM y Android 12")
     @NotBlank
